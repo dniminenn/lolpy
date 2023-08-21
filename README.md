@@ -21,6 +21,8 @@ usage: lolpy [-h] [-f FREQUENCY] [-g {rainbow,ocean}] [-i] [FILE ...]
 For example:
 
 ```cat /proc/cpuinfo | lolpy -f 1```
+or simply
+```lolpy -g ocean /proc/cpuinfo```
 
 ## Interactive Mode
 
