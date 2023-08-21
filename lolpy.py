@@ -40,12 +40,12 @@ def initcli():
     return parser.parse_args()
 
 # Parse files
-def parsefiles(files: list, freq: float):
+def parsefiles(files: list, freq: float, gradient: str):
     for filename in files:
         try:
             with open(filename, 'r') as f:
                 for line in f:
-                    lolcat(line, freq)
+                    lolcat(line, freq, gradient)
         except FileNotFoundError:
             print(f"Error: File '{filename}' not found.", file=sys.stderr)
         except PermissionError:
