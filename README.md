@@ -1,6 +1,9 @@
 # LolPy
 
 A Python-based clone of the lolcat command that generates rainbow-colored text.
+
+Tested on your favourite Linux distribution. Ensure Python is installed on the system before continuing.
+
 ## Installation
 
 Directly download and install lolpy using the following command:
