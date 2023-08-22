@@ -1,9 +1,14 @@
 #!/usr/bin/python
+"""
+lolpy - Rainbows and unicorns
+Author:  Darius Niminenn
+License: MIT
+"""
 import sys
 import math
 import argparse
 import random
-import curses
+import textwrap
 
 GRADIENTS = {
     'rainbow': {
@@ -15,11 +20,45 @@ GRADIENTS = {
         'red': lambda i, freq: math.sin(freq * i) * 127 + 128,
         'green': lambda i, freq: math.sin(freq * i + 5 * math.pi / 6) * 127 + 128,
         'blue': lambda i, freq: 255
+    },
+    'sunset': {
+        'red': lambda i, freq: math.sin(freq * i) * 127 + 128,
+        'green': lambda i, freq: math.sin(freq * i + 4 * math.pi / 3) * 127 + 128,
+        'blue': lambda i, freq: math.sin(freq * i + 2 * math.pi / 3) * 127 + 128
+    },
+    'forest': {
+        'red': lambda i, freq: 34,
+        'green': lambda i, freq: math.sin(freq * i) * 64 + 96,
+        'blue': lambda i, freq: 34
+    },
+    'winter': {
+        'red': lambda i, freq: math.sin(freq * i + 2 * math.pi / 3) * 64 + 96,
+        'green': lambda i, freq: math.sin(freq * i) * 64 + 96,
+        'blue': lambda i, freq: 255
+    },
+    'candy': {
+        'red': lambda i, freq: math.sin(freq * i) * 127 + 128,
+        'green': lambda i, freq: math.sin(freq * i + math.pi / 2) * 127 + 128,
+        'blue': lambda i, freq: math.sin(freq * i + math.pi) * 127 + 128
+    },
+    'fire': {
+        'red': lambda i, freq: 255,
+        'green': lambda i, freq: math.sin(freq * i + 4 * math.pi / 3) * 127 + 128,
+        'blue': lambda i, freq: math.sin(freq * i) * 63 + 64
+    },
+    'deep_space': {
+        'red': lambda i, freq: math.sin(freq * i + 2 * math.pi / 3) * 64 + 96,
+        'green': lambda i, freq: math.sin(freq * i + 4 * math.pi / 3) * 64 + 96,
+        'blue': lambda i, freq: math.sin(freq * i + math.pi) * 127 + 128
+    },
+    'tropical': {
+        'red': lambda i, freq: math.sin(freq * i) * 127 + 128,
+        'green': lambda i, freq: math.sin(freq * i + math.pi / 4) * 127 + 128,
+        'blue': lambda i, freq: math.sin(freq * i + 3 * math.pi / 4) * 127 + 128
     }
-    # Add other gradient styles as needed
 }
 
-def lolcat(text: str, frequency: float=0.5, gradient='rainbow'):
+def lolcat(text: str, frequency: float=1, gradient='rainbow'):
     frequency = 0.1 * (2 ** frequency) - 0.1
     phase_offset = random.uniform(0, 2 * math.pi)
     colored_text = ''
@@ -32,11 +71,16 @@ def lolcat(text: str, frequency: float=0.5, gradient='rainbow'):
     print(colored_text, end='')
 
 def initcli():
-    parser = argparse.ArgumentParser(description="Rainbow-fy your text!")
+    cat = textwrap.dedent("""\
+        
+     /\_/\\
+    ( o.o )
+     > ^ <""")
+    parser = argparse.ArgumentParser(description="Rainbow-fy your text!", formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument('files', metavar='FILE', type=str, nargs='*', help="files to read, if empty, stdin is used")
     parser.add_argument('-f', '--frequency', type=float, default=1, help="set color frequency, default is 1")
     parser.add_argument('-g', '--gradient', type=str, choices=GRADIENTS.keys(), default='rainbow', help="choose a gradient style")
-    parser.add_argument('-i', '--interactive', action='store_true', help="interactive mode")
+    parser.add_argument('-i', '--interactive', action='store_true', help=f"interactive mode\n{cat}")
     return parser.parse_args()
 
 # Parse files
