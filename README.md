@@ -24,7 +24,9 @@ usage: lolpy [-h] [-f FREQUENCY] [-g {rainbow,ocean}] [-i] [FILE ...]
 For example:
 
 ```cat /proc/cpuinfo | lolpy -f 1```
+
 or simply
+
 ```lolpy -g ocean /proc/cpuinfo```
 
 ## Interactive Mode
@@ -48,6 +50,7 @@ LolPy supports different gradient styles:
 To use a gradient, specify it with the -g option:
 
 ```echo "Hello World" | lolpy -g ocean```
+
 ```lolcat -g tropical /proc/cpuinfo```
 
 ## License
