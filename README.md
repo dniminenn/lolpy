@@ -39,10 +39,16 @@ LolPy supports different gradient styles:
 
     rainbow: The classic, vibrant spectrum of colors.
     ocean: Cool, blueish tones reminiscent of the sea.
+    sunset: With reds, oranges, and purples.
+    forest: Evoking feelings of deep woods with greens and browns.
+    winter: Shades of blue and white to represent cold and snowy scenes.
+    candy: Pinks, purples, and light blues.
+    tropical: Vibrant blues, greens, and yellows.
 
 To use a gradient, specify it with the -g option:
 
 ```echo "Hello World" | lolpy -g ocean```
+```lolcat -g tropical /proc/cpuinfo```
 
 ## License
 
